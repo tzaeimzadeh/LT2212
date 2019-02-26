@@ -22,8 +22,17 @@ I chose a vocabulary restriction of 20, as although it contains a lot of stop wo
 
 ### Result table
 
-(Try to use the Markdown table format for this.)
-coming soon :(
+|                        | Grain | Crude | Grain-Crude | Crude-Grain |
+|------------------------|-------|-------|-------------|-------------|
+| No transformation      | 0.873 | 0.885 | 0.877       | 0.877       |
+| Vocab restriction n=20 | 0.873 | 0.885 | 0.877       | 0.877       |
+| Tf-idf transformation  | 0.872 | 0.884 | 0.876       | 0.876       |
+| Vocab n=20 & tf-idf    | 0.872 | 0.884 | 0.876       | 0.876       |
+| TruncatedSVD m=100     | 0.905 | 0.939 | 0.923       | 0.923       |
+| TruncatedSVD m=1000    | 0.905 | 0.939 | 0.923       | 0.923       |
+| Tf-idf & SVD m=100     | 0.894 | 0.887 | 0.707       | 0.707       |
+| Tf-idf & SVD m=1000    | 0.894 | 0.887 | 0.707       | 0.707       |
+
 
 ### The hypothesis in your own words
 
