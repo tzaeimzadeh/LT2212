@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # LT2212 V19 Assignment 2
 
 From Asad Sayeed's statistical NLP course at the University of Gothenburg.
@@ -33,3 +34,6 @@ sentence or less.)
 ## Bonus answers
 
 (Delete if you're not answering the bonus.)
+=======
+# LT2212
+>>>>>>> 2e7c40b82547b8acb2d3e858f88c6c52b48c1d0a
