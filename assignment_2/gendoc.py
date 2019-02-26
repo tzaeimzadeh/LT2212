@@ -102,7 +102,8 @@ def tfidf_transform(vector):
     :return tfidf_vector: dataframe of the tf-idf transformed vector matrix
     """
 
-    tfidf_vector = pandas.DataFrame(TfidfTransformer().fit_transform(X=vector), index=indexes.keys()) #.toarray()
+    tfidf_transformation = TfidfTransformer().fit_transform(X=vector).toarray()
+    tfidf_vector = pandas.DataFrame(tfidf_transformation, index=indexes.keys())
     return tfidf_vector
 
 

@@ -1,5 +1,5 @@
 import argparse, pandas, numpy
-#from sklearn.metrics.pairwise import cosine_similarity     #this did not work :(
+from sklearn.metrics.pairwise import cosine_similarity     #this did not work :(
 
 parser = argparse.ArgumentParser()
 parser.add_argument('f', metavar='filename', help='takes the name of the file to be opened')
@@ -35,7 +35,6 @@ def cos_similarity():
     cos_sim_crude = []
     cos_sim_grainXcrude = []
     cos_sim_crudeXgrain = []
-
 
     for i in range(len(grain)):
         dot = numpy.dot(grain[i], grain[::-1][i])
