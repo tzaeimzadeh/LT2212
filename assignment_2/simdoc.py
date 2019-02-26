@@ -29,7 +29,6 @@ def separate_datafile(file):
 def cos_similarity():
     """
     calculates the average cosine similarity of the document vectors within each topic, as well as between them
-    :return:
     """
 
     cos_sim_grain = []
