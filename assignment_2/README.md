@@ -6,7 +6,8 @@ My name: Tala Zaeimzadeh
 
 ## Additional instructions
 
-Document here additional command-line instructions or other details you want us to know about running your code.
+I have an option for providing an output file name as an argument when calling the gendoc.py file; however, it's commented out as I have a method that produces specific output file names based on which transformation arguments are called on the file.
+
 
 ## File naming convention
 
@@ -14,7 +15,7 @@ The output file naming convention is the name of the transformation carried out 
 
 ## Results and discussion
 
-coming soon :(
+Based on the average cosine-similarites values, especially for the similarity values between the topic subjects (grain and crude), I believe that there must be an error somewhere in my code, as these values seem very high. This could be for a number of reasons. Firstly, I did not remove duplicate files, nor did I filter out stop words, both of which could have contributed to higher values, as there would be more similar counts between the two topic files. Furthermore, I am very unsure about the cosine similarity values. The sklearn cosine similarity function did not work on my data, due to rejecting the shape of the input arrays. Therefore, I used numpy to calculate the average cosine-similarities more manually. If my results are incorrect, this is where I suspect the problem to be. The results of the cosine-similarity carried out on truncated SVD values are the highest. This could be because reducing the dimensionality to 100 or 1000 from more than 10000 is likely to lead to consisternly higher values and maybe over-fitting. 
 
 ### Vocabulary restriction.
 
@@ -40,7 +41,7 @@ I think this assignemt aimed to inform us on how the way we treat/process the da
 
 ### Discussion of trends in results in light of the hypothesis
 
-coming soon :(
+Although the results may be incorrect, there is still a trend that conforms to the hypothesis that processing the data differently can have an affect on the outcome. The results are different based on the type of transofrmation carried out on the data. 
 
 ## Bonus answers
 
