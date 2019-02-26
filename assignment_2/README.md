@@ -47,8 +47,10 @@ Although the results may be incorrect, there is still a trend that conforms to t
 ### Bonus answers
 
 #Flaws
+
 A flaw of the assignment (for me personally) was that it was rather confusing, as I felt unsure what the point was. I originally thought that the assignment was meant to give us a first-hand experience of what we learnt in the NLP module about similarities within related documents (and of course, to some extent, this assignment did provide that); however, I felt like I spent much more time trying to understand what the assignment was asking of me. In retrospect, I feel disappointed that I didn't use this assignment as a chance to experiment with processing the data and carrying out different statistical methods (and specifically, I wish I had used smoothing rather than ignoring counts of 0); however, I feel like I was constantly trying to just work out what the instructions meant that little time was left.
 
 #Applying other measures
+
 Another method that could have been used to compare the similarity of the topics is latent semantic analysis (LSA), which uses contextual information (in what context a word tends to appear) to determine the similarity of words (and therefore documents/topics). The TruncatedSVD-transformed values could have been used for this. Other methods could have also been used, for example in the creation of the vocabulary, instead of taking all the words, a bag-of-words approach could have been used instead where random selections of words were used.
 A better technique I could have used personally was to pre-process my data better, such as remove stop words and use a more precise regex to normalise the text.
