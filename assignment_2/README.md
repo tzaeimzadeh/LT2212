@@ -6,30 +6,33 @@ My name: Tala Zaeimzadeh
 
 ## Additional instructions
 
-Document here additional command-line instructions or other details you
-want us to know about running your code.
+Document here additional command-line instructions or other details you want us to know about running your code.
 
 ## File naming convention
 
-(Delete this section if it's fairly obvious what output file was
-created with what parameters.)
+The output file naming convention is the name of the transformation carried out on it. if multiple transformations carried out, then the later transformation is first followed by the earlier transformation (e.g. if no vocabulary restriction was imposed, but tf-idf was applied, with truncated SVD to 100 dimensions, then the file would be called "svd100_tfidf.csv"). if no transformation carried out, the file is called "vectorfile.csv"
 
 ## Results and discussion
 
+coming soon :(
+
 ### Vocabulary restriction.
 
-(Write what you chose for the vocabulary restriction for output file
-(2), you can give a brief impressionistic justification for why in one
-sentence or less.)
+I chose a vocabulary restriction of 20, as although it contains a lot of stop words, it does also contain some very telling other words. (also my poor laptop was really struggling with higher numbers)
 
 ### Result table
 
 (Try to use the Markdown table format for this.)
+coming soon :(
 
 ### The hypothesis in your own words
 
+I think this assignemt aimed to inform us on how the way we treat/process the data can affect the results of statistical operations carried out on the data. Whilst, of course, the way the actual strings are processed has an affect (normalisation, removing stop words etc), but also the statistical operations used to 'prep' the data can also skew the outputs. For example, whether raw counts are used or whether the counts are transformed, whether the dimensionality of the data matrix is reduced, whether smoothing is used, whether normalisation is used, and so on. This in turn affects other processes that may be carried out on this data, for example, as seen in the differences in the average cosine-similarity values both within topics and between topics. 
+
 ### Discussion of trends in results in light of the hypothesis
+
+coming soon :(
 
 ## Bonus answers
 
-(Delete if you're not answering the bonus.)
+maybe coming soon !
