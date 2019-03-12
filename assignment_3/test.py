@@ -1,6 +1,7 @@
 import os, sys, argparse, pickle
 import numpy as np
 import pandas as pd
+from scipy import stats
 from sklearn.linear_model import LogisticRegression
 
 
@@ -27,20 +28,18 @@ def testing():
 
     trained_model = pickle.load(open(args.modelfile, 'rb'))
 
-    predicted_prob = trained_model.predict_proba(onehotngram)
+    predicted_prob = trained_model.predict_proba(onehotngram)   #list of lists containing the probs [[0.03 0.05..],[]]
     predicted_log_prob = trained_model.predict_log_proba(onehotngram)
     model_accuracy = trained_model.score(onehotngram, class_label)
 
-    sum_log = sum(predicted_log_prob)* (-1/len(onehotngram))
-    perplexity = []
-    for log in sum_log:
-        perplexity.append(2**log)
-    model_perplexity = sum(perplexity)*(-1/len(onehotngram))
+    max_prob = []
+    for i in predicted_prob:
+        max = np.max(i)
+        max_prob.append(max)
 
-    pred_prob = np.argmax(predicted_prob, axis=0)
-    pred_log = np.argmax(predicted_log_prob, axis=0)
+    normalised_entropy = (-1/len(predicted_prob))*stats.entropy(max_prob)
+    model_perplexity=2**normalised_entropy
 
-    predict_class = trained_model.predict(onehotngram)
 
     return model_accuracy, model_perplexity
 

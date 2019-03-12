@@ -91,12 +91,31 @@ def onehot_ngram(corpus, n):
         one_hot_ngram.append(corpus[onehot:onehot+n])
 
     onehot_ngram_word = []
-    for ohngram in one_hot_ngram:
-        index = ohngram[-1].index(1)
-        ohngram[0]+=ohngram[1]      #need to edit this to be n not hard coded numbers #ohngram[1] still there, don't use full ohngram
-        i_to_w = index_to_word[index]
-        ohngram[0].append(i_to_w)   #the one hot vectors each have an individual column, rather than be in a list in one column
-        onehot_ngram_word.append(ohngram[0])
+
+    # need to edit this to be n not hard coded numbers
+    if n == 3:
+        for ohngram in one_hot_ngram:
+            index = ohngram[-1].index(1)
+            ohngram[0]+=ohngram[1]      #ohngram[1] still there, don't use full ohngram
+            i_to_w = index_to_word[index]
+            ohngram[0].append(i_to_w)   #the one hot vectors each have an individual column, rather than be in a list in one column
+            onehot_ngram_word.append(ohngram[0])
+
+    if n == 2:
+        for ohngram in one_hot_ngram:
+            index = ohngram[-1].index(1)
+            i_to_w = index_to_word[index]
+            ohngram[0].append(i_to_w)
+            onehot_ngram_word.append(ohngram[0])
+
+    if n == 4:
+        for ohngram in one_hot_ngram:
+            index = ohngram[-1].index(1)
+            ohngram[0]+=ohngram[1]
+            ohngram[0] += ohngram[2]
+            i_to_w = index_to_word[index]
+            ohngram[0].append(i_to_w)
+            onehot_ngram_word.append(ohngram[0])
 
     onehot_ngram_dataframe = pd.DataFrame(onehot_ngram_word).to_pickle(path=args.outputfile)
 
