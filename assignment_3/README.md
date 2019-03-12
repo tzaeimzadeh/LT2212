@@ -6,30 +6,61 @@ My name: Tala Zaeimzadeh
 
 ## Additional instructions
 
-I'm submitting this early as I am leaving the country for a while, but I hope that you guys don't check this until I am back 
-so I can have time to fix the issues.
+In the command line (for train.py and test.py), please input datafile name first and then modelfile name.
 
-In the command line (for train.py and test.py), please input datafile name first and then modelfile name
+Currently the code is limited to 2, 3 and 4-grams (to be fixed).
 
 ## Reporting for Part 4
 
-Training a model on 1000 lines
-
-when tested against a smaller datafile (~300 lines), there are higher accuracy and perplexity values versus when tested against bigger (~500 lines) datafiles, which is an inverse relationship between accuracy and perplexity. This is surprising 
-as I expected better accuracy to correlate with lower perplexity. I assume this is because I have done something wrong, 
-probably in calculating my perplexity values.
-When tested against itself (pretty being 'trained'), the accuracy and perplexity values were highest, as expected; however
-not as high as would be expected.
+### 3-grams
 
 Training a model on 300 lines
 
-when tested against datafile of ~300 lines, it had the best accuracy but worst perplexity. Datefile of 500 lines had the 
-lowest accuracy, whilst the datafile of ~1000 lines had the lowest perplexity but a mid-range accuracy. The relationship 
-between accuracy and perplexity is surprising here as well, which is probably further evidence that I am calculating perplexity incorrectly.
-When run against itself, it produced better results than the model trained on 1000 lines, but still probably not as good as 
-I was expecting.
+The accuracy was highest for the model run against the smaller datafile (300 lines), whilst the datafile of 1000 lines 
+produced better results than the datafile of 500 lines. The perplexity values are all very close together, which I think is 
+might be due to a mistake in the code, nonetheless, it was the highest for the datafile of 1000 lines. 
+When the model file was run against the same datafile used to train the modelfile, it produced the highest accuracy rate, but 
+it was still a lower value than I was expecting (0.4). Additionally, I expected the perplexity value to be lowest here; 
+however, it was not as low as the when the modelfile was run against another datafile of 300 lines. 
 
+Training a model on 1000 lines
 
-## Reporting for Part Bonus 
+The results from a trained model of 1000 lines are almost identical to the results from the model trained on 300 lines. There 
+are slight differences in the perplexity scores, which follow the pattern of the values mentioned above. When the model was 
+tested against the datafile used to train it, it produced a lower accuracy value (0.3) and a higher perplexity value than the 
+smaller modelfile (300 lines) did when it was tested against itself.
 
-(maybe in the future)
+### 2-grams
+
+The pattern of results for the bigrams were similar to the trigrams, with a higher accuracy rate for the smaller datafiles 
+(300 lines), however, the model trained on 1000 lines produced higher results than the model trained on 300 lines. Perplexity 
+values were again all very similar. 
+When each model was tested against the datafile it was trained on, the both produced lower results than the trigram (0.2).
+
+### 4-grams
+
+Again the pattern of results were similar to the patterns mentioned above. The smaller (300 lines) datafile produced the 
+higher accuracy, whilst the bigger trained model (1000 lines) produced higher accuracy values than the smaller model (300 
+lines). The perplexity values were all very similar again, with the lowest for the smallest datafile tested against the bigger 
+model. 
+The bigger model produced a very low (0.4) accuracy value when tested against the datafile it was trained on; however, the 
+smaller model produced the highest (0.7) accuracy value compared to the models of different ngrams.
+
+### General Trends
+
+There is a general (although not complete) trend that as the ngram size gets bigger, the accuracy values improve. There was 
+marginal improvement in the accuracy values produced by the 4-gram compared to the other ngrams. Additionally, as the 
+modefile size increases, so does the accuracy rates, so that if a model was trained on 1000 lines, it produces higher accuracy 
+values than a model trained on 300 lines. These patterns seem logical, as a bigger ngram trained on more data is likely to 
+have more predictive power, capable of producing more accurate predictions.
+Furthermore, smaller datafiles being tested produced higher accuracy values. This also seems logical, as a smaller test corpus 
+would require less predictions to be made, making a correct prediction more likely.
+
+### Improvements
+
+I have not (yet) dealt with the dummy start/end vectors to deal with ngrams starting/ending at the start/end of a file. 
+The code should also be able to handle ngrams bigger than 4-grams. 
+Furthermore, the code can take a very long time to train bigger datafiles, so I think maybe it can be written more efficiently 
+to reduce the training time.
+Also, as mentioned above, I believe the method to calculate perplexity needs to be revised, as all the values are very similar 
+to each other.
