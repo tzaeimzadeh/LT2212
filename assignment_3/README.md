@@ -12,7 +12,7 @@ Currently the code is limited to 2, 3 and 4-grams (to be fixed).
 
 ## Reporting for Part 4
 
-3-grams
+### 3-grams
 
 Training a model on 300 lines
 
@@ -30,14 +30,14 @@ are slight differences in the perplexity scores, which follow the pattern of the
 tested against the datafile used to train it, it produced a lower accuracy value (0.3) and a higher perplexity value than the 
 smaller modelfile (300 lines) did when it was tested against itself.
 
-2-gram
+### 2-gram
 
 The pattern of results for the bigrams were similar to the trigrams, with a higher accuracy rate for the smaller datafiles 
 (300 lines), however, the model trained on 1000 lines produced higher results than the model trained on 300 lines. Perplexity 
 values were again all very similar. 
 When each model was tested against the datafile it was trained on, the both produced lower results than the trigram (0.2).
 
-4-gram
+### 4-gram
 
 Again the pattern of results were similar to the patterns mentioned above. The smaller (300 lines) datafile produced the 
 higher accuracy, whilst the bigger trained model (1000 lines) produced higher accuracy values than the smaller model (300 
@@ -46,7 +46,7 @@ model.
 The bigger model produced a very low (0.4) accuracy value when tested against the datafile it was trained on; however, the 
 smaller model produced the highest (0.7) accuracy value compared to the models of different ngrams.
 
-General Trends
+### General Trends
 
 There is a general (although not complete) trend that as the ngram size gets bigger, the accuracy values improve. There was 
 marginal improvement in the accuracy values produced by the 4-gram compared to the other ngrams. Additionally, as the 
@@ -56,7 +56,7 @@ have more predictive power, capable of producing more accurate predictions.
 Furthermore, smaller datafiles being tested produced higher accuracy values. This also seems logical, as a smaller test corpus 
 would require less predictions to be made, making a correct prediction more likely.
 
-Improvements
+### Improvements
 
 I have not (yet) dealt with the dummy start/end vectors to deal with ngrams starting/ending at the start/end of a file. 
 The code should also be able to handle ngrams bigger than 4-grams. 
