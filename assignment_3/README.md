@@ -30,14 +30,14 @@ are slight differences in the perplexity scores, which follow the pattern of the
 tested against the datafile used to train it, it produced a lower accuracy value (0.3) and a higher perplexity value than the 
 smaller modelfile (300 lines) did when it was tested against itself.
 
-### 2-gram
+### 2-grams
 
 The pattern of results for the bigrams were similar to the trigrams, with a higher accuracy rate for the smaller datafiles 
 (300 lines), however, the model trained on 1000 lines produced higher results than the model trained on 300 lines. Perplexity 
 values were again all very similar. 
 When each model was tested against the datafile it was trained on, the both produced lower results than the trigram (0.2).
 
-### 4-gram
+### 4-grams
 
 Again the pattern of results were similar to the patterns mentioned above. The smaller (300 lines) datafile produced the 
 higher accuracy, whilst the bigger trained model (1000 lines) produced higher accuracy values than the smaller model (300 
