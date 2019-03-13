@@ -23,6 +23,7 @@ def testing():
     """
 
     data_file = pd.read_pickle(args.datafile)
+    data_file = data_file[data_file.iloc[:,-1].notnull()]   #there are class labels with value None which the Logistic Regression function can't handle
     class_label = data_file.iloc[:, -1].values.tolist()
     onehotngram = data_file.iloc[:, :-1]
 
