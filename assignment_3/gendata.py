@@ -80,7 +80,7 @@ def onehot_ngram(corpus, n):
     turns one-hot encodings representing a corpus into a list of ngrams. The n-1 representations are concatenated, whilst the
     last word (n) is swapped for the actual word instead of its one-hot encoding
     :return:
-    onehot_ngram_word: a comma separated list containing the concatenated n-1 representation of the ngrams with the nth value
+    ngram_vec: a comma separated list containing the concatenated n-1 representation of the ngrams with the nth value
     being the actual word rather than its one-hot representation -> [ [n-2+n-1, "n"] , [0,0,0,1,0,0,"n"] ]
 
     onehot_ngram_dataframe: a pandas dataframe where each row is an ngram, represented as one hot vectors, with the last column
@@ -90,36 +90,16 @@ def onehot_ngram(corpus, n):
     for onehot in range(len(corpus)-n+1):
         one_hot_ngram.append(corpus[onehot:onehot+n])
 
-    onehot_ngram_word = []
+    ngram_vec = []
+    for ohngram in one_hot_ngram:
+        index = ohngram[-1].index(1)
+        i_to_w = index_to_word[index]
+        ngram_vec.extend(vec for vec in ohngram[0:-1])
+        ngram_vec[-1].append(i_to_w)
 
-    # need to edit this to be n not hard coded numbers
-    if n == 3:
-        for ohngram in one_hot_ngram:
-            index = ohngram[-1].index(1)
-            ohngram[0]+=ohngram[1]      #ohngram[1] still there, don't use full ohngram
-            i_to_w = index_to_word[index]
-            ohngram[0].append(i_to_w)   #the one hot vectors each have an individual column, rather than be in a list in one column
-            onehot_ngram_word.append(ohngram[0])
+    onehot_ngram_dataframe = pd.DataFrame(ngram_vec).to_pickle(path=args.outputfile)
 
-    if n == 2:
-        for ohngram in one_hot_ngram:
-            index = ohngram[-1].index(1)
-            i_to_w = index_to_word[index]
-            ohngram[0].append(i_to_w)
-            onehot_ngram_word.append(ohngram[0])
-
-    if n == 4:
-        for ohngram in one_hot_ngram:
-            index = ohngram[-1].index(1)
-            ohngram[0]+=ohngram[1]
-            ohngram[0] += ohngram[2]
-            i_to_w = index_to_word[index]
-            ohngram[0].append(i_to_w)
-            onehot_ngram_word.append(ohngram[0])
-
-    onehot_ngram_dataframe = pd.DataFrame(onehot_ngram_word).to_pickle(path=args.outputfile)
-
-    return onehot_ngram_word
+    return ngram_vec
 
 
 if __name__ == '__main__':
