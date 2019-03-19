@@ -15,26 +15,34 @@ parser.add_argument("inputfile", type=str, help="The file name containing the te
 
 args = parser.parse_args()
 
-def get_vocab():
+def preprocess_file():
     """
-
+    Opens files and normalises text files, by lower casing, tokenising and removing empty strings. Compares each line and truncates
+    the longer line to match the shortest sentence length.
     :return:
+        source_lang = list of lists, with each sublist representing a line in the source language file (French)
+        target_lang = list of lists, with each sublist representing a line in the target language file (English)
     """
-    corpus = []
-    folder_path = os.listdir(args.inputfile)
-    for filename in folder_path:
-        file_path = os.path.join(args.inputfile, filename)
-        #with open(file_path, 'r') as file:
-        with gzip.open(file_path, 'r') as file:
-                read_file = file.readline()
-                print(read_file)
-                normalised_text = re.sub(r"[^\s\w]", " ", read_file.lower())
-                corpus.append(normalised_text)
-    source, target = [], []
-    source+=corpus[0]
-    target+=corpus[1]
 
-    print(len(source), len(target))
-    #print(source[:100])
+    source_lang = []
+    target_lang = []
 
-get_vocab()
+    folder_path = os.listdir(args.inputfile)    #get file names from the source folder
+    with open(os.path.join(args.inputfile, folder_path[0]), encoding='utf-8') as source_file:
+        with open(os.path.join(args.inputfile, folder_path[1]), encoding='utf-8') as target_file:
+        #gzip.open()
+            for s_line, t_line in zip(source_file, target_file):                    #https://stackoverflow.com/questions/19007383/compare-two-different-files-line-by-line-in-python
+                preprocess_source = re.sub(r"[^\s\w]", " ", s_line.lower()).split(" ")
+                preprocess_target = re.sub(r"[^\s\w]", " ", t_line.lower()).split(" ")
+                preprocess_source = [x for x in preprocess_source if x]             #remove empty strings: https://stackoverflow.com/questions/3845423/remove-empty-strings-from-a-list-of-strings
+                preprocess_target = [x for x in preprocess_target if x]
+                shortest = min(len(preprocess_source), len(preprocess_target))
+                truncated_source = preprocess_source[:shortest]
+                truncated_target = preprocess_target[:shortest]
+                source_lang.append(truncated_source)
+                target_lang.append(truncated_target)
+
+    return source_lang, target_lang
+
+
+preprocess_file()
