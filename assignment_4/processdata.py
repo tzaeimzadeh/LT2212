@@ -28,8 +28,8 @@ def preprocess_file():
     target_lang = []
 
     folder_path = os.listdir(args.inputfile)    #get file names from the source folder
-    with open(os.path.join(args.inputfile, folder_path[0]), encoding='utf-8') as source_file:
-        with open(os.path.join(args.inputfile, folder_path[1]), encoding='utf-8') as target_file:
+    with gzip.open(os.path.join(args.inputfile, folder_path[0]), 'rb') as source_file:
+        with gzip.open(os.path.join(args.inputfile, folder_path[1]), 'rb') as target_file:
         #gzip.open()
             for s_line, t_line in zip(source_file, target_file):                    #https://stackoverflow.com/questions/19007383/compare-two-different-files-line-by-line-in-python
                 preprocess_source = re.sub(r"[^\s\w]", " ", s_line.lower()).split(" ")
