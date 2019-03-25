@@ -10,8 +10,8 @@ parser.add_argument("-E", "--end", metavar="E", dest="endline", type=int, defaul
                     help="What line of the input data file to end on. Default is None, whatever the last line is.")
 parser.add_argument("-N", "--ngram", metavar="N", dest="ngram", type=int, default=3,
                     help="The length of ngram to be considered (default 3).")
-parser.add_argument("inputfile", type=str, help="The file name containing the text data.")
-#parser.add_argument("outputfile", type=str, help="The name of the output file for the feature table.")
+parser.add_argument("inputfile", type=str, help="The folder name containing the text data.")
+parser.add_argument("outputfile", type=str, help="The name of the output file for the data (test.txt or train.txt)")
 
 args = parser.parse_args()
 
