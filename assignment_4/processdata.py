@@ -11,7 +11,7 @@ parser.add_argument("-E", "--end", metavar="E", dest="endline", type=int, defaul
 parser.add_argument("-N", "--ngram", metavar="N", dest="ngram", type=int, default=3,
                     help="The length of ngram to be considered (default 3).")
 parser.add_argument("inputfile", type=str, help="The folder name containing the text data.")
-parser.add_argument("outputfile", type=str, help="The name of the output file for the data (test.txt or train.txt)")
+parser.add_argument("outputfile", type=str, help="The name of the output file for the data (test or train)")
 
 args = parser.parse_args()
 
@@ -44,10 +44,9 @@ def preprocess_file():
     smaller_source_lang = source_lang[args.startline:args.endline]
     smaller_target_lang = target_lang[args.startline:args.endline]
 
-    with open("source-language-".format(args.outputfile)) as source, open("target-language-".format(args.outputfile)) as target:
-        source.write(smaller_source_lang)
-        target.write(smaller_target_lang)
-
+    with open("source-language-{}.txt".format(args.outputfile), "w") as source, open("target-language-{}.txt".format(args.outputfile), "w") as target:
+        source.write(" ".join(str(sent) for list in smaller_source_lang for sent in list))
+        target.write(" ".join(str(sent) for list in smaller_target_lang for sent in list))
     return source_lang, target_lang
 
 
